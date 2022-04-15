@@ -1,0 +1,276 @@
+/*COMPONENTES PRE DISEñADOS*/
+@import 'variable';
+
+.btn {
+    font-size: size(m);
+    display: flex;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    transition: all $tiempoMedio ease;
+}
+
+/*color fondo*/
+@mixin btn_outline($name, $cb, $bs, $fc) {
+    .btno_#{$name} {
+        color: $fc;
+        @extend .btn;
+        border: $cb solid ($bs*1rem);
+        border-radius: 10%;
+        box-shadow: ($bs*2rem) ($bs*2rem) 20px lighten($cb, 20%);
+
+        &:hover {
+            color: lighten($colorPrimario, 30%);
+            border: $cb solid $bs+0.05*1rem;
+            font-size: size(m)+2px;
+            box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
+        }
+
+        @content;
+    }
+}
+
+@mixin btn_solid($name, $bs, $bc) {
+
+    .btn_#{$name} {
+        @extend .btn;
+        color: set_color($bc);
+        border: set_color($bc) solid ($bs*1rem);
+        border-radius: 10%;
+        box-shadow: ($bs*2rem) ($bs*2rem) 10px lighten($bc, 10%);
+        background-color: $bc;
+
+        &:hover {
+            color: lighten(set_color($bc), 25%);
+            background-color: lighten($bc, 15%);
+            border: lighten(set_color($bc), 25%) solid $bs+0.05*1rem;
+            font-size: size(m)+2px;
+            box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+        }
+
+        @content;
+    }
+}
+
+@mixin btn_esolid($name, $bs, $bc) {
+
+    .btn_#{$name} {
+        color: set_color($bc);
+        @extend .btn;
+        border: set_color($bc) solid ($bs*1rem);
+        border-radius: 15% 40%;
+        box-shadow: ($bs*2rem) ($bs*2rem) 10px lighten($bc, 10%);
+        background-color: $bc;
+
+        &:hover {
+            color: lighten(set_color($bc), 25%);
+            background-color: lighten($bc, 15%);
+            border: lighten(set_color($bc), 25%) solid $bs+0.05*1rem;
+            font-size: size(m)+2px;
+            box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+        }
+
+        @content;
+    }
+}
+
+@mixin btn_eoutline($name, $cb, $bs, $fc) {
+    .btno_#{$name} {
+        color: $fc;
+        @extend .btn;
+        border: $cb solid ($bs*1rem);
+        border-radius: 15% 40%;
+        box-shadow: ($bs*2rem) ($bs*2rem) 20px lighten($cb, 20%);
+
+        &:hover {
+            color: lighten($colorPrimario, 30%);
+            border: $cb solid $bs+0.05*1rem;
+            font-size: size(m)+2px;
+            box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
+        }
+
+        @content;
+    }
+}
+
+%mnu {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@mixin hamburguesa($bcolor, $fcolor, $bMnu, $direccion, $anchoMenu, $borderTk) {
+
+    .menu-wrap {
+        position: relative; //cambio
+        // right: 100px;
+        // text-align: center;
+        // margin: 0 auto;
+        // width: 100%;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .toggler {
+            @extend %mnu;
+            z-index: 2;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+        }
+
+        .toggler:checked~.menu {
+            visibility: visible;
+
+            >div {
+                transform: scale(1);
+                transition-duration: $tiempoMedio;
+
+                >div {
+                    opacity: 1;
+                    transition: opacity $tiempoCorto ease 0.4s;
+                }
+            }
+        }
+
+        .toggler:checked+.hamburger>div {
+            transform: rotate(135deg);
+
+        }
+
+        .toggler:checked+.hamburger>div:before,
+        .toggler:checked+.hamburger>div:after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+
+
+
+        .hamburger {
+            //contenedor de la hamburguesa
+            @extend %mnu;
+            z-index: 1;
+            width: 60px;
+            height: 60px;
+            padding: 1rem;
+            background: $bcolor;
+            border: $bMnu solid 2px;
+            box-shadow: 3px 3px 40px $bcolor;
+            border-radius: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            div {
+                //linea central de la hamburguesa
+                position: relative;
+                flex: none;
+                width: 100%;
+                height: 2px;
+                background: $fcolor;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all $tiempoCorto ease;
+            }
+
+            //crea las 3 lineas de la hamburguesa
+            >div::after {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 2px;
+                background: inherit;
+                top: 10px;
+            }
+
+            >div::before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                top: -10px;
+                width: 100%;
+                height: 2px;
+                background: inherit;
+            }
+        }
+
+
+        .menu {
+            position: absolute; //cambio
+
+            @if $direccion==d {
+                right: calc(100% - 60px);
+            }
+
+            @else {
+                left: 100%;
+            }
+
+            border: $bcolor solid $borderTk;
+            box-shadow: 5px 5px 15px $bMnu;
+            transform: translatey(60px);
+            top: 0;
+            padding: 0;
+            margin: 0;
+            // left: 0;
+            width: 30vw; // 100
+            height: auto; //100
+            visibility: hidden;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            .container1 {
+                // define un fondo de pantalla para todo el menu
+                background: $bMnu;
+                // border-radius: 50%;
+                width: 100%; ///  vh
+                height: auto; // vh
+                display: flex;
+                flex: none;
+                align-items: center;
+                justify-content: center;
+                transform: scale(0);
+                transition: all $tiempoCorto ease;
+
+
+                .itemcontainer {
+                    //CONTENEDOR DEL MENU
+
+                    text-align: center;
+                    max-width: 90vw;
+                    max-height: 100vh;
+                    opacity: 0;
+                    transition: opacity $tiempoCorto ease;
+                    width: 50%;
+
+
+                    .itemcontainer .item {
+                        // >ul>li
+                        list-style: none;
+                        color: #fff;
+                        font-size: 1.5rem;
+                        padding: 1rem;
+
+                        .itemcontainer .item>a {
+                            // >ul>li>a
+                            color: inherit;
+                            text-decoration: none;
+                            transition: color $tiempoCorto ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*HTML MENU HAMBURGUESA
+<div class="menu-wrap"><input type="checkbox"class="toggler"><div class="hamburger"><div></div></div><div class="menu"><div><div><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Services</a></li><li><a href="#">Contact</a></li></ul></div></div></div></div>
+*/
