@@ -10,106 +10,162 @@
 }
 
 /*color fondo*/
-@mixin btn_outline($name, $cb, $bs, $fc) {
+@mixin btn_outline($name, $cb, $fc, $bs) {
     .btno_#{$name} {
         color: $fc;
         @extend .btn;
-        border: $cb solid ($bs*1rem);
+        border: $cb solid calc(#{$bs});
         border-radius: 10%;
-        box-shadow: ($bs*2rem) ($bs*2rem) 20px lighten($cb, 20%);
+        box-shadow: ($bs*2) ($bs*2) 20px lighten($cb, 20%);
+        transition: all $tiempoCorto ease;
+        font-weight: peso(bold);
 
         &:hover {
             color: lighten($colorPrimario, 30%);
-            border: $cb solid $bs*1rem;
-            // font-size: size(m)+2px;
-            // box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
+            border: lighten($cb, 20%) solid calc(#{$bs} + 0.3px);
+            background-color: lighten($colorPrimario, 72%);
+
+
         }
-        >a{
-        // color: set_color($fc);
-        width: 100%;
-    }
-        
+
+        &:hover>a {
+            color: lighten($colorPrimario, 30%);
+
+        }
+
+        >a {
+            transition: all $tiempoCorto ease;
+            color: inherit;
+            width: 100%;
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 10px lighten($colorPrimario, 60%) inset;
+        }
+        &:active{box-shadow: none;}
 
         @content;
     }
 }
 
-@mixin btn_solid($name, $bs, $bc) {
+@mixin btne_outline($name, $cb, $fc, $bs) {
+    .btneo_#{$name} {
+        color: $fc;
+        @extend .btn;
+        border: $cb solid calc(#{$bs});
+        border-radius: 10% 25%;
+        box-shadow: ($bs*2) ($bs*2) 20px lighten($cb, 20%);
+        transition: all $tiempoCorto ease;
+        font-weight: peso(bold);
+
+        &:hover {
+            color: lighten($colorPrimario, 30%);
+            border: lighten($cb, 20%) solid calc(#{$bs} + 0.3px);
+            background-color: lighten($colorPrimario, 72%);
+
+
+        }
+
+        &:hover>a {
+            color: lighten($colorPrimario, 30%);
+
+        }
+
+        >a {
+            transition: all $tiempoCorto ease;
+            color: inherit;
+            width: 100%;
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 10px lighten($colorPrimario, 60%) inset;
+        }
+        &:active >a{box-shadow: none;}
+
+        @content;
+    }
+}
+
+@mixin btn_solid($name, $bc, $bs) {
 
     .btn_#{$name} {
         @extend .btn;
         color: set_color($bc);
-        border: set_color($bc) solid ($bs*1rem);
+        border: set_color($bc) solid ($bs);
         border-radius: 10%;
-        box-shadow: ($bs*2rem) ($bs*2rem) 10px lighten($bc, 10%);
+        box-shadow: ($bs*2) ($bs*2) 10px lighten($bc, 10%);
         background-color: $bc;
 
         >a {
             width: 100%;
             color: set_color($bc);
+            box-shadow: none;
         }
 
         &:hover {
             color: lighten(set_color($bc), 25%);
             background-color: lighten($bc, 15%);
-            border: lighten(set_color($bc), 25%) solid ($bs *1rem) // font-size: size(m)+2px;
-                // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+            border: lighten(set_color($bc), 25%) solid calc(#{$bs} + 0.3px); // font-size: size(m)+2px;
+        }
+
+        &:hover>a {
+            color: lighten(set_color($bc), 25%);
+
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 5px lighten(set_color($bc), 20%) inset;
+
+        }
+
+        &:active>a {
+            box-shadow: none;
         }
 
         @content;
     }
 }
 
-@mixin btn_esolid($name, $bs, $bc) {
+@mixin btne_solid($name, $bc, $bs) {
 
     .btne_#{$name} {
-        color: set_color($bc);
         @extend .btn;
-        border: set_color($bc) solid ($bs*1rem);
-        border-radius: 15% 40%;
-        box-shadow: ($bs*2rem) ($bs*2rem) 10px lighten($bc, 10%);
+        color: set_color($bc);
+        border: set_color($bc) solid ($bs);
+        border-radius: 10% 25%;
+        box-shadow: ($bs*2) ($bs*2) 10px lighten($bc, 10%);
         background-color: $bc;
-        text-align: center;
+
+        >a {
+            width: 100%;
+            color: set_color($bc);
+            box-shadow: none;
+        }
 
         &:hover {
             color: lighten(set_color($bc), 25%);
             background-color: lighten($bc, 15%);
-            border: lighten(set_color($bc), 25%) solid ($bs *1rem) // font-size: size(m)+2px;
-                // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+            border: lighten(set_color($bc), 25%) solid calc(#{$bs} + 0.3px); // font-size: size(m)+2px;
         }
-        >a{
-           width: 100%;
-            color:set_color($bc);
+
+        &:hover>a {
+            color: lighten(set_color($bc), 25%);
+
         }
-        
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 5px lighten(set_color($bc), 20%) inset;
+
+        }
+
+        &:active>a {
+            box-shadow: none;
+        }
 
         @content;
     }
 }
 
-@mixin btn_eoutline($name, $cb, $bs, $fc) {
-    .btnoe_#{$name} {
-        color: $fc;
-        @extend .btn;
-        border: $cb solid ($bs*1rem);
-        border-radius: 15% 40%;
-        box-shadow: ($bs*2rem) ($bs*2rem) 20px lighten($cb, 20%);
-
-        &:hover {
-            color: lighten($colorPrimario, 30%);
-            border: lighten($cb, 10%) solid $bs;
-            // font-size: size(m)+2px;
-            // box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
-        }
-        >a{
-            color:$fc;
-            width: 100%;
-        }
-       
-
-        @content;
-    }
-}
 
 %mnu {
     position: absolute;
@@ -323,7 +379,7 @@
                 margin-right: 10px;
                 font-size: size(s);
                 z-index: 5;
-                color:  setcolor($bcolor);
+                color: setcolor($bcolor);
 
             }
         }
@@ -352,21 +408,24 @@
                     z-index: 5;
                     color: setcolor($bcolor);
                 }
-                    >span::before {
-                        display: inline-block;
-                        content: "◄";
-                        transition: all $tiempoMedio ease;
-                        margin-right: 10px;
-                        font-size: size(s);
-                        z-index: 5;
-                        color: setcolor($bcolor);
 
-                    }
-
+                >span::before {
+                    display: inline-block;
+                    content: "◄";
+                    transition: all $tiempoMedio ease;
+                    margin-right: 10px;
+                    font-size: size(s);
+                    z-index: 5;
+                    color: setcolor($bcolor);
 
                 }
+
+
             }
-        
+        }
+ >ul{
+     border-radius: 10% 25%;;
+ }
 
         @if $direccion==l {
             .toggler_#{$name}:checked~span::before {
@@ -389,6 +448,7 @@
                     .toggler_#{$name}:checked~span::after {
                         transform: rotate(90deg);
                     }
+
                     .toggler_#{$name}:checked~span::before {
                         transform: rotate(-90deg);
                     }
@@ -408,11 +468,11 @@
         border: $bcolor solid $borderTk;
         border-radius: 3%;
         overflow: hidden;
-        width: auto;
+        height: calc(auto +15px);
         box-sizing: content-box;
         list-style: none;
         transition: opacity, transform 1s ease;
-
+        margin-bottom: 15px ;
         @if $ancho=a {
             width: auto;
         }
@@ -423,11 +483,13 @@
 
         li {
             list-style: none;
-            width: calc(100% - (#{$marginItem}*2));
+            width: calc(90% - (#{$marginItem}*2));
             $cuenta: calc(#{$pxitem} - (#{$marginItem}*2));
             padding: $pyItem #{$cuenta};
             margin: $marginItem;
             z-index: 4;
+                    border-radius: 10% 25%;
+
         }
 
         li>a {
@@ -442,11 +504,14 @@
 
     }
 
+
     .toggler_#{$name} {
         opacity: 0;
         width: 100%;
         height: 100%;
         position: absolute;
+        border-radius: 10% 25%;
+
         left: 0;
         top: 0;
         z-index: 3;
@@ -484,6 +549,7 @@
                 width: 100%;
                 border-radius: 0;
             }
+
             transition: all $tiempoLargo ease;
 
             list-style: none;
@@ -503,7 +569,7 @@ html para el drop configurable
                             <li class="btn_naranja drop_home" >
                                 <span>otro</span>
                                 <input type="checkbox" class="toggler_home" name="menu" id="home">
-                                <ul class="submnu_home">
+                                <ul class="submnu_home">  
                                     <li class="btn_sbm">
                                         <a href="#">1</a>
                                     </li>

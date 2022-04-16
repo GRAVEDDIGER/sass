@@ -6,7 +6,7 @@
 /* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
 /*                                   MARGIN                           */
 /*                                               PADDING                                */
-.btn, .btno_negro, .btno_rojo, .btno_naranja, .btno_sbm {
+.btn, .btno_negro, .btno_rojo, .btneo_naranja, .btneo_sbm {
   font-size: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,7 +33,7 @@ html para el drop configurable
                             <li class="btn_naranja drop_home" >
                                 <span>otro</span>
                                 <input type="checkbox" class="toggler_home" name="menu" id="home">
-                                <ul class="submnu_home">
+                                <ul class="submnu_home">  
                                     <li class="btn_sbm">
                                         <a href="#">1</a>
                                     </li>
@@ -75,59 +75,122 @@ header {
 }
 
 .btno_negro {
-  color: #000;
-  border: #000 solid 0.1rem;
+  color: 0.1;
+  border: #000 solid calc(#000);
   border-radius: 10%;
-  -webkit-box-shadow: 0.2rem 0.2rem 20px #333333;
-          box-shadow: 0.2rem 0.2rem 20px #333333;
+  -webkit-box-shadow: black black 20px #333333;
+          box-shadow: black black 20px #333333;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-weight: 800;
   margin: 15px;
 }
 
 .btno_negro:hover {
   color: #4d4d4d;
-  border: #000 solid 0.1rem;
+  border: #333333 solid calc(#000 + 0.3px);
+  background-color: #b8b8b8;
+}
+
+.btno_negro:hover > a {
+  color: #4d4d4d;
 }
 
 .btno_negro > a {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: inherit;
   width: 100%;
 }
 
+.btno_negro:active {
+  -webkit-box-shadow: black black 10px #999999 inset;
+          box-shadow: black black 10px #999999 inset;
+}
+
+.btno_negro:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .btno_rojo {
-  color: #000;
-  border: red solid 0.1rem;
+  color: 0.1;
+  border: red solid calc(#000);
   border-radius: 10%;
-  -webkit-box-shadow: 0.2rem 0.2rem 20px #ff6666;
-          box-shadow: 0.2rem 0.2rem 20px #ff6666;
+  -webkit-box-shadow: black black 20px #ff6666;
+          box-shadow: black black 20px #ff6666;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-weight: 800;
 }
 
 .btno_rojo:hover {
   color: #4d4d4d;
-  border: red solid 0.1rem;
+  border: #ff6666 solid calc(#000 + 0.3px);
+  background-color: #b8b8b8;
+}
+
+.btno_rojo:hover > a {
+  color: #4d4d4d;
 }
 
 .btno_rojo > a {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: inherit;
   width: 100%;
+}
+
+.btno_rojo:active {
+  -webkit-box-shadow: black black 10px #999999 inset;
+          box-shadow: black black 10px #999999 inset;
+}
+
+.btno_rojo:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .p_a {
   padding: auto;
 }
 
-.btno_naranja {
+.btneo_naranja {
   color: #11bfbf;
-  border: #000 solid 0.1rem;
-  border-radius: 10%;
-  -webkit-box-shadow: 0.2rem 0.2rem 20px #333333;
-          box-shadow: 0.2rem 0.2rem 20px #333333;
+  border: #000 solid calc(2px);
+  border-radius: 10% 25%;
+  -webkit-box-shadow: 4px 4px 20px #333333;
+          box-shadow: 4px 4px 20px #333333;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-weight: 800;
 }
 
-.btno_naranja:hover {
+.btneo_naranja:hover {
   color: #4d4d4d;
-  border: #000 solid 0.1rem;
+  border: #333333 solid calc(2px + 0.3px);
+  background-color: #b8b8b8;
 }
 
-.btno_naranja > a {
+.btneo_naranja:hover > a {
+  color: #4d4d4d;
+}
+
+.btneo_naranja > a {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: inherit;
   width: 100%;
+}
+
+.btneo_naranja:active {
+  -webkit-box-shadow: 4px 4px 10px #999999 inset;
+          box-shadow: 4px 4px 10px #999999 inset;
+}
+
+.btneo_naranja:active > a {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .menu-wrap {
@@ -340,18 +403,24 @@ header {
   position: relative;
 }
 
-.drop_home > span::after {
+.drop_home > span::before {
   display: inline-block;
-  content: "►";
-  margin-left: 10px;
+  content: "◄";
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  margin-right: 10px;
   font-size: 16px;
   z-index: 5;
   color: setcolor(#FFF);
 }
 
-.drop_home .toggler_home:checked ~ span::after {
-  -webkit-transform: translateX(20px);
-          transform: translateX(20px);
+.drop_home > ul {
+  border-radius: 10% 25%;
+}
+
+.drop_home .toggler_home:checked ~ span::before {
+  -webkit-transform: translateX(-20px);
+          transform: translateX(-20px);
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
 }
@@ -363,7 +432,7 @@ header {
   border: #FFF solid 4px;
   border-radius: 3%;
   overflow: hidden;
-  width: auto;
+  height: calc(auto +15px);
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   list-style: none;
@@ -371,15 +440,17 @@ header {
   transition: opacity, -webkit-transform 1s ease;
   transition: opacity, transform 1s ease;
   transition: opacity, transform 1s ease, -webkit-transform 1s ease;
+  margin-bottom: 15px;
   width: auto;
 }
 
 .submnu_home li {
   list-style: none;
-  width: calc(100% - (5px*2));
+  width: calc(90% - (5px*2));
   padding: 0.5rem calc(1rem - (5px*2));
   margin: 5px;
   z-index: 4;
+  border-radius: 10% 25%;
 }
 
 .submnu_home li > a {
@@ -397,6 +468,7 @@ header {
   width: 100%;
   height: 100%;
   position: absolute;
+  border-radius: 10% 25%;
   left: 0;
   top: 0;
   z-index: 3;
@@ -422,17 +494,14 @@ header {
   min-width: 200px;
   width: auto;
   height: auto;
+  overflow: visible;
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
-  overflow: visible;
   position: absolute;
   top: 0;
-  left: calc(4px + 5px + 100%);
+  right: calc(4px + 5px + 100%);
   -webkit-transform: translateY(calc(-1 * (4px + 5px)));
           transform: translateY(calc(-1 * (4px + 5px)));
-  -webkit-transition: all 1.5s ease;
-  transition: all 1.5s ease;
-  list-style: none;
 }
 
 .drop_otro {
@@ -476,6 +545,10 @@ header {
   color: setcolor(#FFF);
 }
 
+.drop_otro > ul {
+  border-radius: 10% 25%;
+}
+
 .drop_otro .toggler_otro:checked ~ span::after {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
@@ -493,7 +566,7 @@ header {
   border: #FFF solid 4px;
   border-radius: 3%;
   overflow: hidden;
-  width: auto;
+  height: calc(auto +15px);
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   list-style: none;
@@ -501,15 +574,17 @@ header {
   transition: opacity, -webkit-transform 1s ease;
   transition: opacity, transform 1s ease;
   transition: opacity, transform 1s ease, -webkit-transform 1s ease;
+  margin-bottom: 15px;
   width: auto;
 }
 
 .submnu_otro li {
   list-style: none;
-  width: calc(100% - (5px*2));
+  width: calc(90% - (5px*2));
   padding: 0.5rem calc(1rem - (5px*2));
   margin: 5px;
   z-index: 4;
+  border-radius: 10% 25%;
 }
 
 .submnu_otro li > a {
@@ -527,6 +602,7 @@ header {
   width: 100%;
   height: 100%;
   position: absolute;
+  border-radius: 10% 25%;
   left: 0;
   top: 0;
   z-index: 3;
@@ -562,19 +638,40 @@ header {
   list-style: none;
 }
 
-.btno_sbm {
+.btneo_sbm {
   color: #11bfbf;
-  border: #000 solid 0.1rem;
-  border-radius: 10%;
-  -webkit-box-shadow: 0.2rem 0.2rem 20px #333333;
-          box-shadow: 0.2rem 0.2rem 20px #333333;
+  border: #000 solid calc(2px);
+  border-radius: 10% 25%;
+  -webkit-box-shadow: 4px 4px 20px #333333;
+          box-shadow: 4px 4px 20px #333333;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-weight: 800;
 }
 
-.btno_sbm:hover {
+.btneo_sbm:hover {
   color: #4d4d4d;
-  border: #000 solid 0.1rem;
+  border: #333333 solid calc(2px + 0.3px);
+  background-color: #b8b8b8;
 }
 
-.btno_sbm > a {
+.btneo_sbm:hover > a {
+  color: #4d4d4d;
+}
+
+.btneo_sbm > a {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: inherit;
   width: 100%;
+}
+
+.btneo_sbm:active {
+  -webkit-box-shadow: 4px 4px 10px #999999 inset;
+          box-shadow: 4px 4px 10px #999999 inset;
+}
+
+.btneo_sbm:active > a {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }

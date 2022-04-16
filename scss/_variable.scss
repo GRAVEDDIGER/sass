@@ -5,7 +5,7 @@ $colorAcento2: #7d7d7d;
 $fondoPrincipal: #FFF;
 $fuente:"Montserrat";
 
-$fP: ("regular":400, "medium":500, "bold":800);
+$fP: (regular:400, medium:500, bold:800);
 $fS:("xxl":32px, "xl":26px, "l":22px, "m":18px, "s":16px);
 $tiempoCorto:0.4s;
 $tiempoMedio:0.7s;
@@ -120,13 +120,8 @@ $tiempoLargo:1.5s;
 }
 
 @function set_color($color) {
-    @if (lightness($color)>60) {
-        @return darken($color, 80%);
-    }
+    @return  transparentize(invert($color),15%);
 
-    @else {
-        @return lighten($color, 80%);
-    }
 }
 
 /*                                   MARGIN                           */
