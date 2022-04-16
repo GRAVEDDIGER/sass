@@ -24,10 +24,59 @@
   left: 0;
 }
 
-/*HTML MENU HAMBURGUESA
-<div class="menu-wrap"><input type="checkbox"class="toggler"><div class="hamburger"><div></div></div><div class="menu"><div><div><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Services</a></li><li><a href="#">Contact</a></li></ul></div></div></div></div>
+/*
+PARAMETROS:
+$bcolor Determina el color del background de la hamburgesa 
+$fcolor Color de la hamburguesa
+$bMnu Borde del menu y background del submenu
+$direccion hacia donde sale la rama del submenu (r) para derecha otra cosa para izquierda
+$borderTk Grosor del borde del menu 
+$ancho ancho del menu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de la letra
+
+
+HTML MENU HAMBURGUESA
+<div class="menu-wrap">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger">
+                <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+
+                            <li class="  clase_de_boton"><a href="#">About</a></li>
+                            <li class="  clase_de_boton"><a href="#">Services</a></li>
+                            <li class="  clase_de_boton"><a href="#">Contact</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 */
 /*
+PARAMETROS:
+$name Determina el 2do segmento del nombre del drop_NAME y del .submnu_NAME
+$bcolor Determina el color del borde del submenu
+$fcolor Font Color
+$bMnu Color de fondo del submenu
+$direccion hacia donde sale la rama del submenu l,r,c
+$borderTk Grosor del borde
+$ancho ancho del submenu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de fuente segun las habilitadas en variables s,m,l,xl,xxl
 html para el drop configurable
 
                             <li class="btn_naranja drop_home" >
