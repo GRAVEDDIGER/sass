@@ -20,4 +20,4 @@ header {
 @include btn_outline(rojo, red, 0.1, $colorPrimario);
 @include p(a);
 @include btn_solid(naranja, 0.1, $colorPrimario);
-@include hamburguesa(black, red, gray, i, 4px);
+@include hamburguesa(black, red, gray, i, 4px,30vw,1rem);
