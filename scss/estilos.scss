@@ -17,7 +17,7 @@ header {
     margin: 15px;
 }
 
-@include btn_eoutline(rojo, red, 0.1, $colorPrimario);
+@include btn_outline(rojo, red, 0.1, $colorPrimario);
 @include p(a);
-@include btn_esolid(naranja, 0.1, $colorPrimario);
-@include hamburguesa(black, red, gray, i, 30%, 2px);
+@include btn_solid(naranja, 0.1, $colorPrimario);
+@include hamburguesa(black, red, gray, i, 4px);
