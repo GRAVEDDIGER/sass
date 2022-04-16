@@ -10,7 +10,6 @@ $fS:("xxl":32px, "xl":26px, "l":22px, "m":18px, "s":16px);
 $tiempoCorto:0.4s;
 $tiempoMedio:0.7s;
 $tiempoLargo:1.5s;
-@use "sass:math" as math;
 
 @function peso($peso) {
     /*funcion que determina el peso de las fuentes se pasa por parametro regular, medium o bold y reemplaza por el valor asigando arriba*/

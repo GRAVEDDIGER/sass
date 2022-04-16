@@ -19,7 +19,10 @@ header {
 
 @include btn_outline(rojo, red, 0.1, $colorPrimario);
 @include p(a);
-@include btn_solid(naranja, 0.1, $colorPrimario);
-@include hamburguesa(black, red, gray, i, 4px,30vw,0.5rem,1rem,3px);
-@include drop(home,black, red, gray, d, 4px,30vw,0.5rem,1rem,5px);
-@include btn_solid(sbm, 0.1, $colorPrimario);
+@include btn_outline(naranja,  $colorPrimario,0.1 ,$colorAcentos);
+// parametros hamburguesa $bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem, $fontsize
+@include hamburguesa($fondoPrincipal, $colorAcentos, $colorSecundario, i, 4px,25vw,0.5rem,1rem,3px,m);
+@include drop(home,$fondoPrincipal,$colorAcentos, $colorSecundario, r, 4px,a,0.5rem,1rem,5px,m);
+@include drop(otro,$fondoPrincipal,$colorAcentos, $colorSecundario, c, 4px,a,0.5rem,1rem,5px,m);
+@include btn_outline(sbm,  $colorPrimario,0.1 ,$colorAcentos);
+

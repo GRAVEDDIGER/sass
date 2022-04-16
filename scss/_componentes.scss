@@ -24,11 +24,11 @@
             // font-size: size(m)+2px;
             // box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
         }
-        &:active{
-            transform: translateY(3px);
-            
-
-        }
+        >a{
+        // color: set_color($fc);
+        width: 100%;
+    }
+        
 
         @content;
     }
@@ -44,18 +44,18 @@
         box-shadow: ($bs*2rem) ($bs*2rem) 10px lighten($bc, 10%);
         background-color: $bc;
 
+        >a {
+            width: 100%;
+            color: set_color($bc);
+        }
+
         &:hover {
             color: lighten(set_color($bc), 25%);
             background-color: lighten($bc, 15%);
-            border: lighten(set_color($bc), 25%) solid ($bs *1rem)
-            // font-size: size(m)+2px;
-            // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+            border: lighten(set_color($bc), 25%) solid ($bs *1rem) // font-size: size(m)+2px;
+                // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
         }
-        &:active{
-            position: absolute;
-            transform: translateY(3px);
 
-        }
         @content;
     }
 }
@@ -74,15 +74,15 @@
         &:hover {
             color: lighten(set_color($bc), 25%);
             background-color: lighten($bc, 15%);
-            border: lighten(set_color($bc), 25%) solid ($bs *1rem)
-            // font-size: size(m)+2px;
-            // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+            border: lighten(set_color($bc), 25%) solid ($bs *1rem) // font-size: size(m)+2px;
+                // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
         }
-        &:active{
-            transform: translateY(3px);
-
-
+        >a{
+           width: 100%;
+            color:set_color($bc);
         }
+        
+
         @content;
     }
 }
@@ -97,14 +97,16 @@
 
         &:hover {
             color: lighten($colorPrimario, 30%);
-            border: lighten($cb,10%) solid $bs;
+            border: lighten($cb, 10%) solid $bs;
             // font-size: size(m)+2px;
             // box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
         }
-        &:active{
-            position: absolute;
-            transform: translateY(3px);
+        >a{
+            color:$fc;
+            width: 100%;
         }
+       
+
         @content;
     }
 }
@@ -115,7 +117,7 @@
     left: 0;
 }
 
-@mixin hamburguesa($bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem) {
+@mixin hamburguesa($bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem, $fontsize) {
 
     .menu-wrap {
         position: relative; //cambio
@@ -283,8 +285,8 @@
 
                         margin: $marginItem;
                         list-style: none;
-                        color: #fff;//revisar
-                        font-size: 1.5rem;
+                        color: setcolor($bcolor); //revisar
+                        font-size: size($fontsize);
 
                         padding: $pyItem $pxitem;
 
@@ -308,47 +310,138 @@
 <div class="menu-wrap"><input type="checkbox"class="toggler"><div class="hamburger"><div></div></div><div class="menu"><div><div><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Services</a></li><li><a href="#">Contact</a></li></ul></div></div></div></div>
 */
 
-@mixin drop($name, $bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem) {
+@mixin drop($name, $bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem, $fontsize) {
     .drop_#{$name} {
         @include fxc(col, nowrap);
         position: relative;
-        >span::after{
-            content: " ►";
-            font-size: size(s);
-            z-index: 5;
-            color: #fff;
-       
+
+        @if $direccion==l {
+            >span::before {
+                display: inline-block;
+                content: "◄";
+                transition: all $tiempoMedio ease;
+                margin-right: 10px;
+                font-size: size(s);
+                z-index: 5;
+                color:  setcolor($bcolor);
+
+            }
         }
 
+        @else {
+            @if $direccion==r {
+                >span::after {
+                    display: inline-block;
+                    content: "►";
+                    margin-left: 10px;
+                    font-size: size(s);
+                    z-index: 5;
+                    color: setcolor($bcolor);
+                }
+
+            }
+
+            @else {
+                >span::after {
+                    display: inline-block;
+                    content: "►";
+                    transition: all $tiempoMedio ease;
+
+                    margin-left: 10px;
+                    font-size: size(s);
+                    z-index: 5;
+                    color: setcolor($bcolor);
+                }
+                    >span::before {
+                        display: inline-block;
+                        content: "◄";
+                        transition: all $tiempoMedio ease;
+                        margin-right: 10px;
+                        font-size: size(s);
+                        z-index: 5;
+                        color: setcolor($bcolor);
+
+                    }
+
+
+                }
+            }
+        
+
+        @if $direccion==l {
+            .toggler_#{$name}:checked~span::before {
+                transform: translateX(-20px);
+                transition: all $tiempoMedio ease;
+
+            }
+        }
+
+        @else {
+            @if $direccion==r {
+                .toggler_#{$name}:checked~span::after {
+                    transform: translateX(20px);
+                    transition: all $tiempoMedio ease;
+                }
+            }
+
+            @else {
+                @if $direccion==c {
+                    .toggler_#{$name}:checked~span::after {
+                        transform: rotate(90deg);
+                    }
+                    .toggler_#{$name}:checked~span::before {
+                        transform: rotate(-90deg);
+                    }
+
+                }
+
+            }
+        }
+
+
     }
-    .submnu_#{$name}{
+
+    .submnu_#{$name} {
         display: none;
+        opacity: 0;
         background-color: $bMnu;
         border: $bcolor solid $borderTk;
         border-radius: 3%;
         overflow: hidden;
         width: auto;
         box-sizing: content-box;
-        @if $ancho=a{width: auto;}
-            @else{width: $ancho;}
-       li {
-           width: calc(100% - (#{$marginItem}*2 ));
-           $cuenta: calc(#{$pxitem} - (#{$marginItem}*2));
-           padding: $pyItem #{$cuenta};
-           margin: $marginItem;
-           z-index: 4;
-         }
-        li>a{
-            text-decoration: 0;
+        list-style: none;
+        transition: opacity, transform 1s ease;
+
+        @if $ancho=a {
+            width: auto;
+        }
+
+        @else {
+            width: $ancho;
+        }
+
+        li {
+            list-style: none;
+            width: calc(100% - (#{$marginItem}*2));
+            $cuenta: calc(#{$pxitem} - (#{$marginItem}*2));
+            padding: $pyItem #{$cuenta};
+            margin: $marginItem;
+            z-index: 4;
+        }
+
+        li>a {
+            text-decoration: none;
             width: 100%;
             margin: 0;
             height: auto;
-            color:#fff;// revisar
-            
-            }
-
+            color: setcolor($bcolor); // revisar
+            list-style: none;
+            font-size: size($fontsize);
         }
-    
+
+    }
+
     .toggler_#{$name} {
         opacity: 0;
         width: 100%;
@@ -358,27 +451,71 @@
         top: 0;
         z-index: 3;
     }
-    .toggler_#{$name}:checked~ul
-    // .togler:checked~ .submnu_#{$name} 
-    {
-    @include fxc(col,0);
-    min-width: 200px;
-    width: auto;
-    height: auto;
-    @if $direccion==l{
-        overflow: visible;
-        position: absolute;
+
+    .toggler_#{$name}:checked~ul {
+        @include fxc(col, 0);
+        opacity: 1;
+        min-width: 200px;
+        width: auto;
+        height: auto;
+
+        @if $direccion==l {
+            overflow: visible;
+            transition: all $tiempoMedio ease;
+            position: absolute;
             top: 0;
             right: calc(#{$borderTk} + #{$marginItem} + 100%);
-            transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem} )));
-    } @else { @if $direccion==d{
-        overflow: visible;
-        position: absolute;
-            top: 0;
-            left: calc(#{$borderTk} + #{$marginItem} + 100%);
-            transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem} )));
+            transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem})));
+        }
+
+        @else {
+            @if $direccion==r {
+                transition: all $tiempoMedio ease;
+                overflow: visible;
+                position: absolute;
+                top: 0;
+                left: calc(#{$borderTk} + #{$marginItem} + 100%);
+                transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem})));
+            }
+
+            @else {
+                transition: all $tiempoMedio ease;
+                position: relative;
+                width: 100%;
+                border-radius: 0;
+            }
+            transition: all $tiempoLargo ease;
+
+            list-style: none;
+
+        }
     }
-    }
-}
+
+
+
+
 
 }
+
+/*
+html para el drop configurable
+
+                            <li class="btn_naranja drop_home" >
+                                <span>otro</span>
+                                <input type="checkbox" class="toggler_home" name="menu" id="home">
+                                <ul class="submnu_home">
+                                    <li class="btn_sbm">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">3</a>
+                                        
+                                    </li>
+                                </ul>
+                            
+                            </li>
+
+*/
