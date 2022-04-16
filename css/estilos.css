@@ -1,12 +1,14 @@
 @charset "UTF-8";
+@use "sass:math" as math;
 /* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
 /*                                   MARGIN                           */
 /*                                               PADDING                                */
 /*COMPONENTES PRE DISEñADOS*/
+@use "sass:math" as math;
 /* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
 /*                                   MARGIN                           */
 /*                                               PADDING                                */
-.btn, .btno_negro, .btno_rojo, .btn_naranja {
+.btn, .btno_negro, .btno_rojo, .btn_naranja, .btn_sbm {
   font-size: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,10 +65,12 @@ header {
 
 .btno_negro:hover {
   color: #4d4d4d;
-  border: #000 solid 0.15rem;
-  font-size: 20px;
-  -webkit-box-shadow: 0.4rem 0.4rem 20px #666666;
-          box-shadow: 0.4rem 0.4rem 20px #666666;
+  border: #000 solid 0.1rem;
+}
+
+.btno_negro:active {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 
 .btno_rojo {
@@ -79,10 +83,12 @@ header {
 
 .btno_rojo:hover {
   color: #4d4d4d;
-  border: red solid 0.15rem;
-  font-size: 20px;
-  -webkit-box-shadow: 0.4rem 0.4rem 20px #ffcccc;
-          box-shadow: 0.4rem 0.4rem 20px #ffcccc;
+  border: red solid 0.1rem;
+}
+
+.btno_rojo:active {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 
 .p_a {
@@ -101,10 +107,13 @@ header {
 .btn_naranja:hover {
   color: white;
   background-color: #262626;
-  border: white solid 0.15rem;
-  font-size: 20px;
-  -webkit-box-shadow: 0.4rem 0.4rem 10px #333333;
-          box-shadow: 0.4rem 0.4rem 10px #333333;
+  border: white solid 0.1rem;
+}
+
+.btn_naranja:active {
+  position: absolute;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 
 .menu-wrap {
@@ -236,7 +245,7 @@ header {
   width: 30vw;
   height: auto;
   visibility: hidden;
-  overflow: hidden;
+  overflow: visible;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -286,7 +295,7 @@ header {
   list-style: none;
   color: #fff;
   font-size: 1.5rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .menu-wrap .menu > div > div > ul > li > a {
@@ -296,4 +305,116 @@ header {
   transition: color 0.4s ease;
   text-align: center;
   margin: 0 auto;
+}
+
+.drop_home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.drop_home > span::after {
+  content: " ►";
+  font-size: 16px;
+  z-index: 5;
+  color: #fff;
+}
+
+.submnu_home {
+  display: none;
+  background-color: gray;
+  border: black solid 4px;
+  border-radius: 3%;
+  overflow: hidden;
+  width: auto;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: auto;
+}
+
+.submnu_home li {
+  width: calc(100% - (5px*2 ));
+  padding: 0.5rem calc(1rem - (5px*2));
+  margin: 5px;
+  z-index: 4;
+}
+
+.submnu_home li > a {
+  -webkit-text-decoration: 0;
+          text-decoration: 0;
+  width: 100%;
+  margin: 0;
+  height: auto;
+  color: #fff;
+}
+
+.toggler_home {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.toggler_home:checked ~ ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 200px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  left: calc(4px + 5px + 100%);
+  -webkit-transform: translateY(calc(-1 * (4px + 5px )));
+          transform: translateY(calc(-1 * (4px + 5px )));
+}
+
+.btn_sbm {
+  color: #cccccc;
+  border: #cccccc solid 0.1rem;
+  border-radius: 10%;
+  -webkit-box-shadow: 0.2rem 0.2rem 10px #1a1a1a;
+          box-shadow: 0.2rem 0.2rem 10px #1a1a1a;
+  background-color: #000;
+}
+
+.btn_sbm:hover {
+  color: white;
+  background-color: #262626;
+  border: white solid 0.1rem;
+}
+
+.btn_sbm:active {
+  position: absolute;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }

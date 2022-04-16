@@ -20,9 +20,14 @@
 
         &:hover {
             color: lighten($colorPrimario, 30%);
-            border: $cb solid $bs+0.05*1rem;
-            font-size: size(m)+2px;
-            box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
+            border: $cb solid $bs*1rem;
+            // font-size: size(m)+2px;
+            // box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
+        }
+        &:active{
+            transform: translateY(3px);
+            
+
         }
 
         @content;
@@ -42,11 +47,15 @@
         &:hover {
             color: lighten(set_color($bc), 25%);
             background-color: lighten($bc, 15%);
-            border: lighten(set_color($bc), 25%) solid $bs+0.05*1rem;
-            font-size: size(m)+2px;
-            box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+            border: lighten(set_color($bc), 25%) solid ($bs *1rem)
+            // font-size: size(m)+2px;
+            // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
         }
+        &:active{
+            position: absolute;
+            transform: translateY(3px);
 
+        }
         @content;
     }
 }
@@ -65,11 +74,15 @@
         &:hover {
             color: lighten(set_color($bc), 25%);
             background-color: lighten($bc, 15%);
-            border: lighten(set_color($bc), 25%) solid $bs+0.05*1rem;
-            font-size: size(m)+2px;
-            box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
+            border: lighten(set_color($bc), 25%) solid ($bs *1rem)
+            // font-size: size(m)+2px;
+            // box-shadow: ($bs*4rem) ($bs*4rem) 10px lighten($bc, 20%);
         }
+        &:active{
+            transform: translateY(3px);
 
+
+        }
         @content;
     }
 }
@@ -84,11 +97,14 @@
 
         &:hover {
             color: lighten($colorPrimario, 30%);
-            border: $cb solid $bs+0.05*1rem;
-            font-size: size(m)+2px;
-            box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
+            border: lighten($cb,10%) solid $bs;
+            // font-size: size(m)+2px;
+            // box-shadow: ($bs*4rem) ($bs*4rem) 20px lighten($cb, 40%);
         }
-
+        &:active{
+            position: absolute;
+            transform: translateY(3px);
+        }
         @content;
     }
 }
@@ -99,7 +115,7 @@
     left: 0;
 }
 
-@mixin hamburguesa($bcolor, $fcolor, $bMnu, $direccion, $borderTk,$ancho,$pyItem) {
+@mixin hamburguesa($bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem) {
 
     .menu-wrap {
         position: relative; //cambio
@@ -218,11 +234,19 @@
             top: 0;
             padding: 0;
             margin: 0;
+
             // left: 0;
-            @if $ancho==a{width: auto;}@else{width: $ancho;}
+            @if $ancho==a {
+                width: auto;
+            }
+
+            @else {
+                width: $ancho;
+            }
+
             height: auto; //100
             visibility: hidden;
-            overflow: hidden;
+            overflow: visible;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -254,14 +278,18 @@
                     width: 100%;
 
 
-                    >ul>li {//item
-                        margin: 3px;
-                        list-style: none;
-                        color: #fff;
-                        font-size: 1.5rem;
-                        padding: $pyItem;
+                    >ul>li {
+                        //item
 
-                        >a {//propiedades del link
+                        margin: $marginItem;
+                        list-style: none;
+                        color: #fff;//revisar
+                        font-size: 1.5rem;
+
+                        padding: $pyItem $pxitem;
+
+                        >a {
+                            //propiedades del link
                             color: inherit;
                             text-decoration: none;
                             transition: color $tiempoCorto ease;
@@ -279,3 +307,78 @@
 /*HTML MENU HAMBURGUESA
 <div class="menu-wrap"><input type="checkbox"class="toggler"><div class="hamburger"><div></div></div><div class="menu"><div><div><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Services</a></li><li><a href="#">Contact</a></li></ul></div></div></div></div>
 */
+
+@mixin drop($name, $bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem) {
+    .drop_#{$name} {
+        @include fxc(col, nowrap);
+        position: relative;
+        >span::after{
+            content: " ►";
+            font-size: size(s);
+            z-index: 5;
+            color: #fff;
+       
+        }
+
+    }
+    .submnu_#{$name}{
+        display: none;
+        background-color: $bMnu;
+        border: $bcolor solid $borderTk;
+        border-radius: 3%;
+        overflow: hidden;
+        width: auto;
+        box-sizing: content-box;
+        @if $ancho=a{width: auto;}
+            @else{width: $ancho;}
+       li {
+           width: calc(100% - (#{$marginItem}*2 ));
+           $cuenta: calc(#{$pxitem} - (#{$marginItem}*2));
+           padding: $pyItem #{$cuenta};
+           margin: $marginItem;
+           z-index: 4;
+         }
+        li>a{
+            text-decoration: 0;
+            width: 100%;
+            margin: 0;
+            height: auto;
+            color:#fff;// revisar
+            
+            }
+
+        }
+    
+    .toggler_#{$name} {
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+    }
+    .toggler_#{$name}:checked~ul
+    // .togler:checked~ .submnu_#{$name} 
+    {
+    @include fxc(col,0);
+    min-width: 200px;
+    width: auto;
+    height: auto;
+    @if $direccion==l{
+        overflow: visible;
+        position: absolute;
+            top: 0;
+            right: calc(#{$borderTk} + #{$marginItem} + 100%);
+            transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem} )));
+    } @else { @if $direccion==d{
+        overflow: visible;
+        position: absolute;
+            top: 0;
+            left: calc(#{$borderTk} + #{$marginItem} + 100%);
+            transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem} )));
+    }
+    }
+}
+
+}

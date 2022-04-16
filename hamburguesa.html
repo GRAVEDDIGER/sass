@@ -13,17 +13,33 @@
 
 <body>
     <header style="font-size: 40px;">holis</header>
-    <div style="display:flex;width:100vw;justify-content:center; align-items: center; height: auto;">
+    <div style="display:flex;width:100vw;justify-content:flex-start; align-items: center; height: auto;">
         <div class="menu-wrap">
             <input type="checkbox" class="toggler">
             <div class="hamburger">
                 <div></div>
             </div>
             <div class="menu">
-                <div class="container1">
-                    <div class="itemContainer">
+                <div >
+                    <div >
                         <ul>
-                            <li class="btn_naranja" ><a  href="#">Home</a></li>
+                            <li class="btn_naranja drop_home" >
+                                <span>Home</span>
+                                <input type="radio" class="toggler_home" name="menu" id="home">
+                                <ul class="submnu_home">
+                                    <li class="btn_sbm">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">3</a>
+                                        
+                                    </li>
+                                </ul>
+                            
+                            </li>
                             <li class="btn_naranja" ><a  href="#">About</a></li>
                             <li class="btn_naranja" ><a  href="#">Services</a></li>
                             <li class="btn_naranja" ><a  href="#">Contact</a></li>
