@@ -42,7 +42,10 @@
         &:active {
             box-shadow: ($bs*2) ($bs*2) 10px lighten($colorPrimario, 60%) inset;
         }
-        &:active{box-shadow: none;}
+
+        &:active {
+            box-shadow: none;
+        }
 
         @content;
     }
@@ -80,7 +83,10 @@
         &:active {
             box-shadow: ($bs*2) ($bs*2) 10px lighten($colorPrimario, 60%) inset;
         }
-        &:active >a{box-shadow: none;}
+
+        &:active>a {
+            box-shadow: none;
+        }
 
         @content;
     }
@@ -460,9 +466,11 @@ HTML MENU HAMBURGUESA
 
             }
         }
- >ul{
-     border-radius: 10% 25%;;
- }
+
+        >ul {
+            border-radius: 10% 25%;
+            ;
+        }
 
         @if $direccion==l {
             .toggler_#{$name}:checked~span::before {
@@ -509,7 +517,8 @@ HTML MENU HAMBURGUESA
         box-sizing: content-box;
         list-style: none;
         transition: opacity, transform 1s ease;
-        margin-bottom: 15px ;
+        margin-bottom: 15px;
+
         @if $ancho=a {
             width: auto;
         }
@@ -525,7 +534,7 @@ HTML MENU HAMBURGUESA
             padding: $pyItem #{$cuenta};
             margin: $marginItem;
             z-index: 4;
-                    border-radius: 10% 25%;
+            border-radius: 10% 25%;
 
         }
 
@@ -634,3 +643,34 @@ html para el drop configurable
                             </li>
 
 */
+
+@mixin card($name, $borderColor, $borderTk, $backCol, $fontSize, $fontColor, $ancho) {
+    .container_#{$name} {
+        @include fxc(col, 0);
+        border: $borderColor solid $borderTk;
+        border-radius: 3%;
+        background-color: $backCol;
+        // box-shadow: 6px 6px 40px;
+        padding: 1rem;
+        width: fit-content;
+
+
+        .pic_#{$name} {
+            // border: invert($backCol, 100%) solid calc(#{$borderTk} +3px);
+            position: relative;
+            @include fxc(col, 0);
+            // box-shadow: 2px 2px 15px;
+
+            >img {
+                border: white solid 3px;
+            }
+
+            .favtd_#{$name} {
+                position: absolute;
+                top: 0;
+                right: 85%;
+                background-color: red;
+            }
+        }
+    }
+}

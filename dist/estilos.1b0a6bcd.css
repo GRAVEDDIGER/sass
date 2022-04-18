@@ -1,0 +1,502 @@
+@charset "UTF-8";
+/* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
+/*                                   MARGIN                           */
+/*                                               PADDING                                */
+/*COMPONENTES PRE DISEñADOS*/
+/* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
+/*                                   MARGIN                           */
+/*                                               PADDING                                */
+.btn, .btno_negro, .btno_rojo, .btneo_naranja, .btneo_sbm {
+  font-size: 18px;
+  display: flex;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.7s ease; }
+
+/*color fondo*/
+.menu-wrap .toggler, .menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+/*
+PARAMETROS:
+$bcolor Determina el color del background de la hamburgesa 
+$fcolor Color de la hamburguesa
+$bMnu Borde del menu y background del submenu
+$direccion hacia donde sale la rama del submenu (r) para derecha otra cosa para izquierda
+$borderTk Grosor del borde del menu 
+$ancho ancho del menu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de la letra
+
+
+HTML MENU HAMBURGUESA
+<div class="menu-wrap">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger">
+                <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+
+                            <li class="  clase_de_boton"><a href="#">About</a></li>
+                            <li class="  clase_de_boton"><a href="#">Services</a></li>
+                            <li class="  clase_de_boton"><a href="#">Contact</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+*/
+/*
+PARAMETROS:
+$name Determina el 2do segmento del nombre del drop_NAME y del .submnu_NAME
+$bcolor Determina el color del borde del submenu
+$fcolor Font Color
+$bMnu Color de fondo del submenu
+$direccion hacia donde sale la rama del submenu l,r,c
+$borderTk Grosor del borde
+$ancho ancho del submenu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de fuente segun las habilitadas en variables s,m,l,xl,xxl
+html para el drop configurable
+
+                            <li class="btn_naranja drop_home" >
+                                <span>otro</span>
+                                <input type="checkbox" class="toggler_home" name="menu" id="home">
+                                <ul class="submnu_home">  
+                                    <li class="btn_sbm">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">3</a>
+                                        
+                                    </li>
+                                </ul>
+                            
+                            </li>
+
+*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; }
+
+.btno_negro {
+  color: 0.1;
+  border: #000 solid calc(#000);
+  border-radius: 10%;
+  box-shadow: black black 20px #333333;
+  transition: all 0.4s ease;
+  font-weight: 800;
+  margin: 15px; }
+  .btno_negro:hover {
+    color: #4d4d4d;
+    border: #333333 solid calc(#000 + 0.3px);
+    background-color: #b8b8b8; }
+  .btno_negro:hover > a {
+    color: #4d4d4d; }
+  .btno_negro > a {
+    transition: all 0.4s ease;
+    color: inherit;
+    width: 100%; }
+  .btno_negro:active {
+    box-shadow: black black 10px #999999 inset; }
+  .btno_negro:active {
+    box-shadow: none; }
+
+.btno_rojo {
+  color: 0.1;
+  border: red solid calc(#000);
+  border-radius: 10%;
+  box-shadow: black black 20px #ff6666;
+  transition: all 0.4s ease;
+  font-weight: 800; }
+  .btno_rojo:hover {
+    color: #4d4d4d;
+    border: #ff6666 solid calc(#000 + 0.3px);
+    background-color: #b8b8b8; }
+  .btno_rojo:hover > a {
+    color: #4d4d4d; }
+  .btno_rojo > a {
+    transition: all 0.4s ease;
+    color: inherit;
+    width: 100%; }
+  .btno_rojo:active {
+    box-shadow: black black 10px #999999 inset; }
+  .btno_rojo:active {
+    box-shadow: none; }
+
+.p_a {
+  padding: auto; }
+
+.btneo_naranja {
+  color: #11bfbf;
+  border: #000 solid calc(2px);
+  border-radius: 10% 25%;
+  box-shadow: 4px 4px 20px #333333;
+  transition: all 0.4s ease;
+  font-weight: 800; }
+  .btneo_naranja:hover {
+    color: #4d4d4d;
+    border: #333333 solid calc(2px + 0.3px);
+    background-color: #b8b8b8; }
+  .btneo_naranja:hover > a {
+    color: #4d4d4d; }
+  .btneo_naranja > a {
+    transition: all 0.4s ease;
+    color: inherit;
+    width: 100%; }
+  .btneo_naranja:active {
+    box-shadow: 4px 4px 10px #999999 inset; }
+  .btneo_naranja:active > a {
+    box-shadow: none; }
+
+.menu-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+  .menu-wrap .toggler {
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0; }
+  .menu-wrap .toggler:checked ~ .menu {
+    visibility: visible; }
+    .menu-wrap .toggler:checked ~ .menu > div {
+      transform: scale(1);
+      transition-duration: 0.7s; }
+      .menu-wrap .toggler:checked ~ .menu > div > div {
+        opacity: 1;
+        transition: opacity 0.4s ease 0.4s; }
+  .menu-wrap .toggler:checked + .hamburger > div {
+    transform: rotate(135deg); }
+  .menu-wrap .toggler:checked + .hamburger > div:before,
+  .menu-wrap .toggler:checked + .hamburger > div:after {
+    top: 0;
+    transform: rotate(90deg); }
+  .menu-wrap .hamburger {
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: #FFF;
+    border: #dad5d5 solid 2px;
+    box-shadow: 3px 3px 40px #FFF;
+    border-radius: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .menu-wrap .hamburger div {
+      position: relative;
+      flex: none;
+      width: 100%;
+      height: 2px;
+      background: #11bfbf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease; }
+    .menu-wrap .hamburger > div::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 2px;
+      background: inherit;
+      top: 10px; }
+    .menu-wrap .hamburger > div::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: -10px;
+      width: 100%;
+      height: 2px;
+      background: inherit; }
+  .menu-wrap .menu {
+    position: absolute;
+    left: 100%;
+    border: #FFF solid 4px;
+    border-radius: 3%;
+    box-shadow: 5px 5px 15px #dad5d5;
+    transform: translatey(60px);
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 25vw;
+    height: auto;
+    visibility: hidden;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .menu-wrap .menu > div {
+      background: #dad5d5;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex: none;
+      align-items: flex-start;
+      justify-content: flex-start;
+      transform: scale(0);
+      transition: all 0.4s ease; }
+      .menu-wrap .menu > div > div {
+        margin: 3px;
+        text-align: center;
+        max-width: 90vw;
+        max-height: 100vh;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        width: 100%; }
+        .menu-wrap .menu > div > div > ul > li {
+          margin: 3px;
+          list-style: none;
+          color: setcolor(#FFF);
+          font-size: 18px;
+          padding: 0.5rem 1rem; }
+          .menu-wrap .menu > div > div > ul > li > a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.4s ease;
+            text-align: center;
+            margin: 0 auto; }
+
+.drop_home {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .drop_home > span::before {
+    display: inline-block;
+    content: "◄";
+    transition: all 0.7s ease;
+    margin-right: 10px;
+    font-size: 16px;
+    z-index: 5;
+    color: setcolor(#FFF); }
+  .drop_home > ul {
+    border-radius: 10% 25%; }
+  .drop_home .toggler_home:checked ~ span::before {
+    transform: translateX(-20px);
+    transition: all 0.7s ease; }
+
+.submnu_home {
+  display: none;
+  opacity: 0;
+  background-color: #dad5d5;
+  border: #FFF solid 4px;
+  border-radius: 3%;
+  overflow: hidden;
+  height: calc(auto +15px);
+  box-sizing: content-box;
+  list-style: none;
+  transition: opacity, transform 1s ease;
+  margin-bottom: 15px;
+  width: auto; }
+  .submnu_home li {
+    list-style: none;
+    width: calc(90% - (5px*2));
+    padding: 0.5rem calc(1rem - (5px*2));
+    margin: 5px;
+    z-index: 4;
+    border-radius: 10% 25%; }
+  .submnu_home li > a {
+    text-decoration: none;
+    width: 100%;
+    margin: 0;
+    height: auto;
+    color: setcolor(#FFF);
+    list-style: none;
+    font-size: 18px; }
+
+.toggler_home {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10% 25%;
+  left: 0;
+  top: 0;
+  z-index: 3; }
+
+.toggler_home:checked ~ ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  min-width: 200px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  transition: all 0.7s ease;
+  position: absolute;
+  top: 0;
+  right: calc(4px + 5px + 100%);
+  transform: translateY(calc(-1 * (4px + 5px))); }
+
+.drop_otro {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .drop_otro > span::after {
+    display: inline-block;
+    content: "►";
+    transition: all 0.7s ease;
+    margin-left: 10px;
+    font-size: 16px;
+    z-index: 5;
+    color: setcolor(#FFF); }
+  .drop_otro > span::before {
+    display: inline-block;
+    content: "◄";
+    transition: all 0.7s ease;
+    margin-right: 10px;
+    font-size: 16px;
+    z-index: 5;
+    color: setcolor(#FFF); }
+  .drop_otro > ul {
+    border-radius: 10% 25%; }
+  .drop_otro .toggler_otro:checked ~ span::after {
+    transform: rotate(90deg); }
+  .drop_otro .toggler_otro:checked ~ span::before {
+    transform: rotate(-90deg); }
+
+.submnu_otro {
+  display: none;
+  opacity: 0;
+  background-color: #dad5d5;
+  border: #FFF solid 4px;
+  border-radius: 3%;
+  overflow: hidden;
+  height: calc(auto +15px);
+  box-sizing: content-box;
+  list-style: none;
+  transition: opacity, transform 1s ease;
+  margin-bottom: 15px;
+  width: auto; }
+  .submnu_otro li {
+    list-style: none;
+    width: calc(90% - (5px*2));
+    padding: 0.5rem calc(1rem - (5px*2));
+    margin: 5px;
+    z-index: 4;
+    border-radius: 10% 25%; }
+  .submnu_otro li > a {
+    text-decoration: none;
+    width: 100%;
+    margin: 0;
+    height: auto;
+    color: setcolor(#FFF);
+    list-style: none;
+    font-size: 18px; }
+
+.toggler_otro {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10% 25%;
+  left: 0;
+  top: 0;
+  z-index: 3; }
+
+.toggler_otro:checked ~ ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  min-width: 200px;
+  width: auto;
+  height: auto;
+  transition: all 0.7s ease;
+  position: relative;
+  width: 100%;
+  border-radius: 0;
+  transition: all 1.5s ease;
+  list-style: none; }
+
+.btneo_sbm {
+  color: #11bfbf;
+  border: #000 solid calc(2px);
+  border-radius: 10% 25%;
+  box-shadow: 4px 4px 20px #333333;
+  transition: all 0.4s ease;
+  font-weight: 800; }
+  .btneo_sbm:hover {
+    color: #4d4d4d;
+    border: #333333 solid calc(2px + 0.3px);
+    background-color: #b8b8b8; }
+  .btneo_sbm:hover > a {
+    color: #4d4d4d; }
+  .btneo_sbm > a {
+    transition: all 0.4s ease;
+    color: inherit;
+    width: 100%; }
+  .btneo_sbm:active {
+    box-shadow: 4px 4px 10px #999999 inset; }
+  .btneo_sbm:active > a {
+    box-shadow: none; }
+
+.container_uno {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border: yellow solid 3px;
+  border-radius: 3%;
+  background-color: black;
+  padding: 1rem;
+  width: fit-content; }
+  .container_uno .pic_uno {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center; }
+    .container_uno .pic_uno > img {
+      border: white solid 3px; }
+    .container_uno .pic_uno .favtd_uno {
+      position: absolute;
+      top: 0;
+      right: 85%;
+      background-color: red; }
+
+
+/*# sourceMappingURL=/estilos.1b0a6bcd.css.map */

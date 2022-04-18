@@ -120,7 +120,7 @@ $tiempoLargo:1.5s;
 }
 
 @function set_color($color) {
-    @return  transparentize(invert($color),15%);
+    @return transparentize(invert($color), 15%);
 
 }
 
@@ -177,7 +177,7 @@ $tiempoLargo:1.5s;
 
     @else {
         .p_#{$m} {
-            padding: $m*1px;
+            padding: $m;
         }
     }
 }
