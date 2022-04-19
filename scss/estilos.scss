@@ -5,6 +5,13 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Gotham';
+
+}
+
+body {
+    display: flex;
+    flex-direction: column
 }
 
 header {
@@ -25,4 +32,5 @@ header {
 @include drop(home, $fondoPrincipal, $colorAcentos, $colorSecundario, l, 4px, a, 0.5rem, 1rem, 5px, m);
 @include drop(otro, $fondoPrincipal, $colorAcentos, $colorSecundario, c, 4px, 70%, 0.5rem, 1rem, 5px, m);
 @include btne_outline(sbm, $colorPrimario, $colorAcentos, 2px);
-@include card(uno, yellow, 3px, black, m, red, 25vw);
+@include card(uno, $colorSecundario, 3px, orange, l, $colorAcentos, 20vw);
+@include lcard(uno, $colorSecundario, 3px, orange, l, $colorAcentos, 40vw);

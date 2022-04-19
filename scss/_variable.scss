@@ -5,6 +5,11 @@ $colorAcento2: #7d7d7d;
 $fondoPrincipal: #FFF;
 $fuente:"Montserrat";
 
+@font-face {
+    font-family: 'Gotham';
+    src: url("/dist/Gotham-Book.otf");
+}
+
 $fP: (regular:400, medium:500, bold:800);
 $fS:("xxl":32px, "xl":26px, "l":22px, "m":18px, "s":16px);
 $tiempoCorto:0.4s;
@@ -120,7 +125,7 @@ $tiempoLargo:1.5s;
 }
 
 @function set_color($color) {
-    @return transparentize(invert($color), 15%);
+    @return transparentize(invert($color), 0.15);
 
 }
 
